@@ -848,7 +848,7 @@
   // ── Supabase setup ─────────────────────────────────────────────
   const SUPABASE_URL = 'https://wovxuxipinhvsdmgvxet.supabase.co'
   const SUPABASE_ANON_KEY = 'sb_publishable_DhBDClfBC2oi607Wf5MBXA_NzYuF1P9'
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  const supaClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
   // ── Notify form ────────────────────────────────────────────────
   document.getElementById('notifyForm').addEventListener('submit', async e => {
@@ -864,7 +864,7 @@
     submitBtn.disabled = true
 
     try {
-      const { error } = await supabase
+      const { error } = await supaClient
         .from('notify_signups')
         .insert([{
           email,
