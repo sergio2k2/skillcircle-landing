@@ -297,6 +297,7 @@
     }
     .notify-form button:hover { background: var(--gold-lt); }
     .notify-form button:active { transform: scale(0.97); }
+    .notify-form button:disabled { opacity: 0.6; cursor: wait; }
 
     .notify-note {
       margin-top: 12px;
@@ -793,6 +794,9 @@
   <p class="footer-bottom">© 2026 SkillCircle · Rotterdam</p>
 </footer>
 
+<!-- Supabase JS client (voor het notify-formulier) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
   // ── Custom cursor ──────────────────────────────────────────────
   const cursor = document.getElementById('cursor')
@@ -841,14 +845,48 @@
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
 
+  // ── Supabase setup ─────────────────────────────────────────────
+  const SUPABASE_URL = 'https://wovxuxipinhvsdmgvxet.supabase.co'
+  const SUPABASE_ANON_KEY = 'sb_publishable_DhBDClfBC2oi607Wf5MBXA_NzYuF1P9'
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
   // ── Notify form ────────────────────────────────────────────────
-  document.getElementById('notifyForm').addEventListener('submit', e => {
+  document.getElementById('notifyForm').addEventListener('submit', async e => {
     e.preventDefault()
-    const email = document.getElementById('emailInput').value
-    // TODO: koppel aan emaillijst (Mailchimp, Supabase, etc.)
-    document.getElementById('notifyForm').style.display = 'none'
-    document.getElementById('notifySuccess').style.display = 'block'
-    document.querySelector('.notify-note').style.opacity = '0'
+    const emailInput = document.getElementById('emailInput')
+    const submitBtn = e.target.querySelector('button[type="submit"]')
+    const email = emailInput.value.trim().toLowerCase()
+    if (!email) return
+
+    // Loading state
+    const originalText = submitBtn.textContent
+    submitBtn.textContent = 'Bezig...'
+    submitBtn.disabled = true
+
+    try {
+      const { error } = await supabase
+        .from('notify_signups')
+        .insert([{
+          email,
+          user_agent: navigator.userAgent.slice(0, 200)
+        }])
+
+      // Dubbele email (unique-constraint) tonen we als succes — geen reden om gebruiker te ontmoedigen
+      if (error && error.code !== '23505') throw error
+
+      document.getElementById('notifyForm').style.display = 'none'
+      document.getElementById('notifySuccess').style.display = 'block'
+      document.querySelector('.notify-note').style.opacity = '0'
+    } catch (err) {
+      console.error('Signup error:', err)
+      submitBtn.textContent = originalText
+      submitBtn.disabled = false
+      emailInput.value = ''
+      emailInput.placeholder = 'Iets ging mis — probeer opnieuw'
+      setTimeout(() => {
+        emailInput.placeholder = 'jouw@email.nl'
+      }, 4000)
+    }
   })
 
   // ── Circle formation animation ────────────────────────────────
