@@ -305,6 +305,37 @@
       color: var(--muted);
       letter-spacing: 0.05em;
     }
+    .notify-bonus {
+      max-width: 440px;
+      margin: 0 auto 18px;
+      padding: 20px 22px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(200,146,42,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+    .notify-bonus-pill {
+      padding: 5px 14px;
+      border-radius: 100px;
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .notify-bonus-text {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--cream);
+    }
+    .notify-bonus-text strong { color: var(--gold-lt); font-weight: 600; }
     .notify-success {
       display: none;
       text-align: center;
@@ -710,12 +741,19 @@
   </p>
 
   <div class="notify-wrap">
+    <div class="notify-bonus">
+      <span class="notify-bonus-pill">50 Circle Points cadeau</span>
+      <p class="notify-bonus-text">
+        Meld je nu vast aan en ontvang <strong>50&nbsp;gratis&nbsp;Circle&nbsp;Points</strong>
+        zodra we live gaan — als je straks lid wordt met ditzelfde e-mailadres.
+      </p>
+    </div>
     <form class="notify-form" id="notifyForm">
       <input type="email" placeholder="jouw@email.nl" required id="emailInput" />
-      <button type="submit">Houd me op de hoogte</button>
+      <button type="submit">Claim mijn 50 punten</button>
     </form>
     <div class="notify-success" id="notifySuccess">
-      ✦ &nbsp;We houden je op de hoogte. Tot snel.
+      ✦ &nbsp;Gelukt! Je 50 Circle Points staan klaar voor wanneer we live gaan.
     </div>
     <p class="notify-note">Geen spam. Alleen het moment dat we live gaan.</p>
   </div>
