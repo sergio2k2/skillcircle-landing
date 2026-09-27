@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aanmelding gelukt — SkillCircle</title>
+  <meta name="description" content="Je aanmelding voor SkillCircle is gelukt. Je 50 Circle Points staan klaar voor wanneer we live gaan." />
+  <meta name="theme-color" content="#2F5D50" />
+  <!-- Deze pagina hoort niet in Google te verschijnen: hij is alleen het
+       sluitstuk van de aanmelding en telt als conversie in Google Ads. -->
+  <meta name="robots" content="noindex, follow" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232F5D50'/%3E%3Ccircle cx='71.9' cy='71.9' r='8.5' fill='%23D96B43'/%3E%3Ccircle cx='50' cy='81' r='6.5' fill='%23E0A458'/%3E%3Ccircle cx='28.1' cy='71.9' r='8.5' fill='%23FAF3EA'/%3E%3Ccircle cx='19' cy='50' r='6.5' fill='%23D96B43'/%3E%3Ccircle cx='28.1' cy='28.1' r='8.5' fill='%23E0A458'/%3E%3Ccircle cx='50' cy='19' r='6.5' fill='%23FAF3EA'/%3E%3Ccircle cx='71.9' cy='28.1' r='8.5' fill='%23D96B43'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Dezelfde tokens als de landingspagina en de app. */
+    :root {
+      --font-display: 'Bricolage Grotesque', Georgia, sans-serif;
+      --font-body:    'Atkinson Hyperlegible', system-ui, sans-serif;
+      --sc-sand:   #FAF3EA;
+      --sc-cream:  #EFE6D6;
+      --sc-bark:   #8A7C6C;
+      --sc-clay:   #7A5218;
+      --sc-earth:  #2F5D50;
+      --sc-dark3:  #24493F;
+      --sc-ink:    #2B2016;
+      --sc-leaf:   #DEEAE4;
+      --sc-teal:   #C4552D;
+      --sc-amber:  #E0A458;
+      --sc-gold:   #F3CE94;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--sc-sand);
+      color: var(--sc-ink);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    ::selection { background: var(--sc-leaf); color: var(--sc-earth); }
+    :focus-visible { outline: 2px solid var(--sc-earth); outline-offset: 2px; border-radius: 6px; }
+
+    .ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+    .ambient-circle { position: absolute; border-radius: 50%; border: 1.5px dashed rgba(47,93,80,0.13); }
+    .amb-1 { width: 460px; height: 460px; top: -170px; right: -130px; }
+    .amb-2 { width: 300px; height: 300px; bottom: -120px; left: -110px; border-style: solid; border-color: rgba(224,164,88,0.20); }
+
+    nav { position: relative; z-index: 1; background: var(--sc-earth); padding: 14px 24px; }
+    .nav-inner {
+      width: 100%; max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo svg { width: 32px; height: 32px; display: block; }
+    .logo-text {
+      font-family: var(--font-display);
+      font-weight: 800; font-size: 20px; letter-spacing: -0.4px;
+      color: var(--sc-sand);
+    }
+    .logo-text em { font-style: normal; color: var(--sc-amber); }
+    .nav-tag {
+      font-size: 12px; font-weight: 700;
+      padding: 5px 12px; border-radius: 100px;
+      background: rgba(224,164,88,0.16);
+      border: 1px solid rgba(224,164,88,0.34);
+      color: var(--sc-gold);
+      white-space: nowrap;
+    }
+
+    main {
+      position: relative; z-index: 1;
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      padding: 56px 24px 72px;
+    }
+    .kaart {
+      width: 100%; max-width: 560px;
+      background: #fff;
+      border: 1px solid var(--sc-cream);
+      border-radius: 20px;
+      padding: 40px 32px;
+      box-shadow: 0 10px 30px rgba(43,32,22,0.06);
+      text-align: center;
+    }
+
+    .vink {
+      width: 64px; height: 64px; margin: 0 auto 22px;
+      border-radius: 50%;
+      background: var(--sc-leaf);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .vink svg { width: 30px; height: 30px; }
+
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(28px, 6vw, 38px);
+      line-height: 1.12;
+      letter-spacing: -1.2px;
+      color: var(--sc-earth);
+    }
+    .onder-kop { font-size: 17px; color: var(--sc-ink); margin-top: 14px; }
+
+    .punten {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(224,164,88,0.16);
+      border: 1px solid rgba(224,164,88,0.4);
+      color: var(--sc-clay);
+      font-size: 14px; font-weight: 700;
+      padding: 8px 16px; border-radius: 100px;
+      margin-top: 22px;
+    }
+    .punten::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--sc-amber); }
+
+    .stappen {
+      text-align: left;
+      margin-top: 28px; padding-top: 24px;
+      border-top: 1px solid var(--sc-cream);
+    }
+    .stappen h2 {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 17px; letter-spacing: -0.3px; color: var(--sc-earth);
+      margin-bottom: 12px;
+    }
+    .stappen li { list-style: none; font-size: 15px; color: var(--sc-bark); padding: 6px 0 6px 22px; position: relative; }
+    .stappen li::before {
+      content: ""; position: absolute; left: 0; top: 15px;
+      width: 8px; height: 8px; border-radius: 50%; background: var(--sc-amber);
+    }
+    .stappen li strong { color: var(--sc-ink); font-weight: 700; }
+
+    .terug {
+      display: inline-block; margin-top: 28px;
+      font-family: var(--font-body); font-size: 15px; font-weight: 700;
+      padding: 13px 24px; border-radius: 12px;
+      background: var(--sc-earth); color: var(--sc-sand);
+      text-decoration: none;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .terug:hover { background: var(--sc-dark3); transform: translateY(-1px); }
+
+    footer {
+      position: relative; z-index: 1;
+      background: var(--sc-dark3);
+      color: rgba(250,243,234,0.6);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 13px;
+    }
+    footer a { color: var(--sc-gold); text-decoration: none; }
+
+    @media (max-width: 560px) {
+      .kaart { padding: 32px 22px; }
+      main { padding: 32px 18px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ambient">
+  <div class="ambient-circle amb-1"></div>
+  <div class="ambient-circle amb-2"></div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="SkillCircle">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="71.9" cy="71.9" r="8.5" fill="#D96B43"/>
+        <circle cx="50" cy="81" r="6.5" fill="#E0A458"/>
+        <circle cx="28.1" cy="71.9" r="8.5" fill="#FAF3EA"/>
+        <circle cx="19" cy="50" r="6.5" fill="#D96B43"/>
+        <circle cx="28.1" cy="28.1" r="8.5" fill="#E0A458"/>
+        <circle cx="50" cy="19" r="6.5" fill="#FAF3EA"/>
+        <circle cx="71.9" cy="28.1" r="8.5" fill="#D96B43"/>
+      </svg>
+      <span class="logo-text">Skill<em>Circle</em></span>
+    </a>
+    <span class="nav-tag">Binnenkort</span>
+  </div>
+</nav>
+
+<main>
+  <div class="kaart">
+    <div class="vink" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#2F5D50" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6 9 17l-5-5" />
+      </svg>
+    </div>
+
+    <h1>Je staat op de lijst</h1>
+    <p class="onder-kop">
+      Bedankt voor je aanmelding. We laten het weten zodra SkillCircle opengaat in Rotterdam.
+    </p>
+
+    <span class="punten">50 Circle Points staan voor je klaar</span>
+
+    <div class="stappen">
+      <h2>Hoe het verdergaat</h2>
+      <ul>
+        <li>Je hoort van ons <strong>zodra we live gaan</strong> — één mailtje, geen nieuwsbrief.</li>
+        <li>Word je lid met <strong>hetzelfde e-mailadres</strong>, dan staan je 50 Circle Points klaar.</li>
+        <li>Met die punten vraag je meteen je eerste hulp in de buurt, zonder dat je eerst zelf iets hoeft te doen.</li>
+      </ul>
+    </div>
+
+    <a class="terug" href="/">Terug naar de website</a>
+  </div>
+</main>
+
+<footer>
+  Vragen? Mail ons via <a href="mailto:info@skillcircle.online">info@skillcircle.online</a> · © 2026 SkillCircle · Rotterdam
+</footer>
+
+</body>
+</html>

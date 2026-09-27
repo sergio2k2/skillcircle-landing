@@ -467,6 +467,11 @@
       document.getElementById('notifyForm').style.display = 'none'
       document.getElementById('notifySuccess').style.display = 'block'
       document.querySelector('.notify-note').style.opacity = '0'
+
+      // Door naar de bedankpagina. Google Ads telt een aanmelding pas als die
+      // pagina ook echt bezocht wordt; de melding hierboven blijft staan voor
+      // het geval de navigatie niet doorgaat.
+      window.location.assign('/bedankt')
     } catch (err) {
       console.error('Signup error:', err)
       submitBtn.textContent = originalText
